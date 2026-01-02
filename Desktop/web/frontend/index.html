@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Video Frame Browser</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="title-block">
+          <span class="eyebrow">Frame Explorer MVP</span>
+          <h1>Video Upload -> Frame Browser</h1>
+          <p>Upload a video, extract frames with FFmpeg, and browse results instantly.</p>
+        </div>
+        <div class="status-card">
+          <div class="status-title">Backend Status</div>
+          <div class="status-value" id="backendStatus">Not checked</div>
+          <div class="status-meta" id="videoMeta">No upload yet</div>
+        </div>
+      </header>
+
+      <section class="upload-card">
+        <div class="upload-inputs">
+          <label class="file-pill">
+            <input id="videoInput" type="file" accept="video/*" />
+            <span id="fileLabel">Choose video file</span>
+          </label>
+          <button class="primary" id="uploadBtn" type="button">Upload & Extract</button>
+        </div>
+        <div class="upload-progress">
+          <progress id="uploadProgress" value="0" max="100"></progress>
+          <div class="upload-status" id="uploadStatus">Waiting for upload.</div>
+        </div>
+      </section>
+
+      <section class="browser">
+        <aside class="frame-panel">
+          <div class="panel-header">
+            <h2>Frames</h2>
+            <div class="panel-meta" id="frameCountLabel">0 frames</div>
+          </div>
+          <div class="frame-list" id="frameList">
+            <div class="empty-state">Upload a video to load frames.</div>
+          </div>
+          <button class="ghost" id="loadMoreBtn" type="button">Load More</button>
+        </aside>
+
+        <main class="preview-panel">
+          <div class="preview-toolbar">
+            <button class="ghost" id="prevBtn" type="button">Prev</button>
+            <div class="preview-meta" id="currentFrameLabel">No frame selected</div>
+            <button class="ghost" id="nextBtn" type="button">Next</button>
+          </div>
+          <div class="preview-body">
+            <img id="previewImage" alt="Frame preview" />
+            <div class="preview-placeholder" id="previewPlaceholder">
+              Frame preview will appear here.
+            </div>
+          </div>
+          <div class="preview-hint">
+            Use the arrow keys (Left / Right) to move between frames.
+          </div>
+        </main>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
